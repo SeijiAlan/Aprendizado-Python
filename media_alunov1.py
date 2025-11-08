@@ -11,10 +11,18 @@ def cadastro_alunos():
             break
 
     #Toda vez que um novo cadastro for iniciado a lista notas será zerada.
-    notas=[]
+    notas = []
     for c in range(2):
-        nota=float(input(f'Digite a nota {c+1}'))
-        notas.append(nota)
+        while True:
+            try:
+                nota = float(input(f'Digite a nota {c + 1}: '))
+                if nota < 0 or nota > 10:
+                    print('Digite uma nota entre 0 e 10!')
+                    continue
+                notas.append(nota)
+                break
+            except ValueError:
+                print('Digite apenas números!')
 
     #sum e len são comandos utilizados para realizar operações de dados/valores que se encontram em uma lista
     media=sum(notas)/len(notas)
